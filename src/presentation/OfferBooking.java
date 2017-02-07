@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Collection;
 
+
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -269,9 +270,14 @@ public class OfferBooking extends JFrame {
 					bookOffer.setEnabled(true);
 					offerInfo.removeAllElements(); // en vez de clear.
 					bookOffer.setText("");
-
+					/*int m= month.getSelectedIndex()+1;
+					int d= Integer.parseInt(day.getText());
+					try{
+						String monthStr = (m>=10)?String.valueOf(m):"0"+m;
+						String dayStr = (d>=10)?String.valueOf(d):"0"+d;
+						Date date = Date.valueOf(Integer.parseInt(year.getText())+"-"+monthStr+"-"+dayStr);*/
 					java.util.Date date = newDate(Integer.parseInt(year.getText()), month.getSelectedIndex(),
-							Integer.parseInt(day.getText()));
+						Integer.parseInt(day.getText()));
 
 					coleccion = businessLogic.getConcreteOffers(city.getText(), date);
 					for (Offer v : coleccion)
@@ -280,7 +286,10 @@ public class OfferBooking extends JFrame {
 						searchResult.setText("No offers in that city in that date");
 					else
 						searchResult.setText("Choose an available offer in this list:");
-
+					/*}catch(Exception Fecha){
+					bookOffer.setEnabled(false);
+					searchResult.setText("Error: La fecha introducida no es correcta");
+					}*/
 				}
 
 			});
@@ -357,7 +366,6 @@ public class OfferBooking extends JFrame {
 			offerBox.setModel(offerInfo);
 			offerBox.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					// if(offerBox.getSelectedItem()!= null){
 
 					if (offerBox.getItemCount() > 0) {
 						selectedOffer = (Offer) offerBox.getSelectedItem();
@@ -380,7 +388,7 @@ public class OfferBooking extends JFrame {
 						}
 						if(!disponible){
 							bookOffer.setEnabled(false);
-							bookOffer.setText("No hay habitaciones de esa modalidad");
+							bookOffer.setText("Error: No hay habitaciones de esa modalidad");
 							
 						}
 						else{
