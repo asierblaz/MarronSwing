@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Collection;
 
 
@@ -270,14 +270,14 @@ public class OfferBooking extends JFrame {
 					bookOffer.setEnabled(true);
 					offerInfo.removeAllElements(); // en vez de clear.
 					bookOffer.setText("");
-					/*int m= month.getSelectedIndex()+1;
+					int m= month.getSelectedIndex()+1;
 					int d= Integer.parseInt(day.getText());
 					try{
 						String monthStr = (m>=10)?String.valueOf(m):"0"+m;
 						String dayStr = (d>=10)?String.valueOf(d):"0"+d;
-						Date date = Date.valueOf(Integer.parseInt(year.getText())+"-"+monthStr+"-"+dayStr);*/
-					java.util.Date date = newDate(Integer.parseInt(year.getText()), month.getSelectedIndex(),
-						Integer.parseInt(day.getText()));
+						Date date = Date.valueOf(Integer.parseInt(year.getText())+"-"+monthStr+"-"+dayStr);
+					//java.util.Date date = newDate(Integer.parseInt(year.getText()), month.getSelectedIndex(),
+					//	Integer.parseInt(day.getText()));
 
 					coleccion = businessLogic.getConcreteOffers(city.getText(), date);
 					for (Offer v : coleccion)
@@ -286,10 +286,10 @@ public class OfferBooking extends JFrame {
 						searchResult.setText("No offers in that city in that date");
 					else
 						searchResult.setText("Choose an available offer in this list:");
-					/*}catch(Exception Fecha){
+					}catch(Exception Fecha){
 					bookOffer.setEnabled(false);
 					searchResult.setText("Error: La fecha introducida no es correcta");
-					}*/
+					}
 				}
 
 			});
@@ -349,7 +349,7 @@ public class OfferBooking extends JFrame {
 		p.setVisible(true);
 
 	}
-
+/*
 	private Date newDate(int year, int month, int day) {
 
 		Calendar calendar = Calendar.getInstance();
@@ -357,7 +357,7 @@ public class OfferBooking extends JFrame {
 		calendar.set(Calendar.MILLISECOND, 0);
 
 		return calendar.getTime();
-	}
+	}*/
 
 	private JComboBox<Offer> getOfferBox() {
 		if (offerBox == null) {
@@ -376,8 +376,7 @@ public class OfferBooking extends JFrame {
 							NumeroHabitaciones = selectedOffer.getTripleNumber();
 							if (NumeroHabitaciones == 0) 
 								disponible = false;
-						}
-							
+						}	
 						if (doubleRooms.isSelected()){
 							if (NumeroHabitaciones==0)
 								disponible=false;
@@ -388,8 +387,7 @@ public class OfferBooking extends JFrame {
 						}
 						if(!disponible){
 							bookOffer.setEnabled(false);
-							bookOffer.setText("Error: No hay habitaciones de esa modalidad");
-							
+							bookOffer.setText("Error: No hay habitaciones de esa modalidad");							
 						}
 						else{
 							bookOffer.setEnabled(true);
