@@ -288,7 +288,7 @@ public class OfferBooking extends JFrame {
 						searchResult.setText("Choose an available offer in this list:");
 					}catch(Exception Fecha){
 					bookOffer.setEnabled(false);
-					searchResult.setText("Error: La fecha introducida no es correcta");
+					searchResult.setText("Error: La fecha introducida es incorrecta");
 					}
 				}
 
