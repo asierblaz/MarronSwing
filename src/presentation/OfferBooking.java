@@ -331,7 +331,7 @@ public class OfferBooking extends JFrame {
 							error = true;
 					}
 					if (error)
-						bookOffer.setText("Error: There were no offers available!");
+						bookOffer.setText("No available offer for that room type");
 					else
 						bookOffer.setText("Booked. #rooms left: " + (num - 1));
 					bookOffer.setEnabled(false);
