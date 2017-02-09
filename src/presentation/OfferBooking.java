@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.util.Calendar;
-import java.sql.Date;
+import java.sql.Date;  //modificada java.util.date para poder utilizar valueOf en el error de la fecha
 import java.util.Collection;
 
 
@@ -378,10 +378,12 @@ public class OfferBooking extends JFrame {
 								disponible = false;
 						}	
 						if (doubleRooms.isSelected()){
+							NumeroHabitaciones = selectedOffer.getDoubleNumber();
 							if (NumeroHabitaciones==0)
 								disponible=false;
 						}
 						if (singleRooms.isSelected()){
+							NumeroHabitaciones = selectedOffer.getSingleNumber();
 							if (NumeroHabitaciones==0)
 								disponible=false;
 						}
